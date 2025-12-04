@@ -1,0 +1,59 @@
+{
+  "name": "mcp-connector-awareness-engine",
+  "version": "1.0.0",
+  "description": "Persistent meta-layer ensuring AI agents properly utilize MCP tools",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "calibrate": "ts-node src/cli/calibrate.ts",
+    "health-check": "ts-node src/cli/health-check.ts",
+    "verify": "ts-node src/cli/verify.ts",
+    "integrate:claude": "ts-node src/integrations/claude-desktop.ts",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write 'src/**/*.ts'"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "automation",
+    "asana",
+    "linear",
+    "github",
+    "notion",
+    "connector",
+    "orchestration"
+  ],
+  "author": "GlacierEQ <GLACIER.EQUILIBRIUM@GMAIL.COM>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GlacierEQ/mcp-connector-awareness-engine.git"
+  },
+  "dependencies": {
+    "@asana/node-sdk": "^3.0.0",
+    "@linear/sdk": "^20.0.0",
+    "@octokit/rest": "^20.0.0",
+    "@notionhq/client": "^2.2.0",
+    "dotenv": "^16.0.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/js-yaml": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
