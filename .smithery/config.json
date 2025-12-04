@@ -1,0 +1,77 @@
+{
+  "name": "mcp-connector-awareness-engine",
+  "version": "1.0.0",
+  "description": "Persistent meta-layer ensuring AI agents properly utilize MCP tools. Auto-calibration, health monitoring, context injection, and usage enforcement for Asana, Linear, GitHub, Notion connectors.",
+  "author": "GlacierEQ",
+  "license": "MIT",
+  "repository": "https://github.com/GlacierEQ/mcp-connector-awareness-engine",
+  "mcp": {
+    "server": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "ASANA_PAT": "${ASANA_PAT}",
+        "LINEAR_API_KEY": "${LINEAR_API_KEY}",
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "NOTION_API_KEY": "${NOTION_API_KEY}",
+        "HEALTH_CHECK_INTERVAL_MINUTES": "30",
+        "AUTO_RUN_ON_START": "true",
+        "VERIFY_INTERVAL_HOURS": "24"
+      }
+    },
+    "tools": [
+      {
+        "name": "calibrate_connectors",
+        "description": "Auto-discover and map user identity across all MCP platforms (Asana, Linear, GitHub, Notion)"
+      },
+      {
+        "name": "verify_connectors",
+        "description": "Verify existing calibration and authentication status for all connectors"
+      },
+      {
+        "name": "enforce_tool_usage",
+        "description": "Intercept and enhance MCP tool calls with pagination enforcement, ID resolution, and operation chaining"
+      },
+      {
+        "name": "health_check",
+        "description": "Run comprehensive health check across all MCP connectors and return status"
+      },
+      {
+        "name": "get_calibration_state",
+        "description": "Retrieve current calibration state including user identities, workspace IDs, and authentication status"
+      }
+    ],
+    "resources": [
+      {
+        "uri": "calibration://state",
+        "name": "Calibration State",
+        "description": "Current calibration data for all MCP connectors"
+      },
+      {
+        "uri": "health://status",
+        "name": "Health Status",
+        "description": "Real-time health monitoring data for all connectors"
+      }
+    ]
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "automation",
+    "asana",
+    "linear",
+    "github",
+    "notion",
+    "connector",
+    "orchestration",
+    "meta-layer",
+    "calibration"
+  ],
+  "categories": [
+    "automation",
+    "integration",
+    "monitoring",
+    "orchestration"
+  ]
+}
