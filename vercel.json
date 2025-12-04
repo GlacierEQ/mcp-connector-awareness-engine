@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "mcp-awareness-engine",
+  "builds": [
+    {
+      "src": "dist/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/health",
+      "dest": "dist/health-check.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "ASANA_PAT": "@asana-pat",
+    "LINEAR_API_KEY": "@linear-api-key",
+    "GITHUB_TOKEN": "@github-token",
+    "NOTION_API_KEY": "@notion-api-key"
+  }
+}

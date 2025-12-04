@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  awareness-engine:
+    build: .
+    container_name: mcp-awareness-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - ASANA_PAT=${ASANA_PAT}
+      - LINEAR_API_KEY=${LINEAR_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - NOTION_API_KEY=${NOTION_API_KEY}
+      - HEALTH_CHECK_INTERVAL_MINUTES=30
+      - AUTO_RUN_ON_START=true
+      - VERIFY_INTERVAL_HOURS=24
+      - REQUIRE_PAGINATION_COMPLETION=true
+      - AUTO_RESOLVE_IDS=true
+      - ALERT_ON_FAILURE=true
+      - CREATE_LINEAR_ISSUES_ON_FAILURE=true
+    volumes:
+      - ./data:/app/data
+      - ./calibration-state.yaml:/app/calibration-state.yaml
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('./dist/health-check').ping()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  data:
+    driver: local

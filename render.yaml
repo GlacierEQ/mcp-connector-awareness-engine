@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: mcp-awareness-engine
+    runtime: docker
+    plan: starter
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ASANA_PAT
+        sync: false
+      - key: LINEAR_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: NOTION_API_KEY
+        sync: false
+      - key: HEALTH_CHECK_INTERVAL_MINUTES
+        value: 30
+      - key: AUTO_RUN_ON_START
+        value: true
+      - key: VERIFY_INTERVAL_HOURS
+        value: 24
+      - key: REQUIRE_PAGINATION_COMPLETION
+        value: true
+      - key: AUTO_RESOLVE_IDS
+        value: true
+      - key: ALERT_ON_FAILURE
+        value: true
+      - key: CREATE_LINEAR_ISSUES_ON_FAILURE
+        value: true
+    healthCheckPath: /health
+    autoDeploy: true
